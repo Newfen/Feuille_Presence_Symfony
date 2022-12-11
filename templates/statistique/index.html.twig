@@ -2,19 +2,40 @@
 
 {% block title %}Hello StatistiqueController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block content %}
+    <div class="border-style">
+        <h1>Statistique</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+        <div class="statistique-div">
+            <div class="statistique-child">
+                <h3>Mes nominations</h3>
+                <div class="circle">
+                    <p class="number-font">{{ statistiques | length }}</p>
+                </div>
+            </div>
+            <div class="statistique-child">
+                <h3>Nombre de pas</h3>
+                <div class="second-statistique">
+                    <div>
+                        <h4>Par Sessions</h4>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/laragon/www/FeuillePresenceSymfony/src/Controller/StatistiqueController.php'|file_link(0) }}">src/Controller/StatistiqueController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/laragon/www/FeuillePresenceSymfony/templates/statistique/index.html.twig'|file_link(0) }}">templates/statistique/index.html.twig</a></code></li>
-    </ul>
-</div>
+                        {% set sum = 0 %}
+
+                        {% for statistique in statistiques %}
+                        <div class="nbpas-div">
+                            <p class="number-font">{{ statistique.dateTirage|date("d F o") }}</p>
+                            <span class="number-font circle-3">{{ statistique.nombrePas }}</span>
+                        </div>
+                            {% set sum = sum + statistique.nombrePas %}
+                        {% endfor %}
+                    </div>
+                    <div>
+                        <h4>Total</h4>
+                        <p class="number-font circle-2">{{ sum }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 {% endblock %}

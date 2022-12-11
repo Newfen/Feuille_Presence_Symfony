@@ -15,9 +15,43 @@
     </head>
     <body>
     {% block body %}
-        {% block content %}
-            <button class="btn btn-primary">test</button>
-        {% endblock %}
-        {% endblock %}
+        <div class="wrapper area">
+            <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+            <div class="parent">
+                <div class="border-style neon">APPLICATION DE GESTION DE FEUILLE DE PRESENCE</div>
+                <div class="border-style menu-div">
+                    <div class="circle neon-border">
+                        <img class='profile-picture' src="/img/boy.png" alt="imaga profil">
+                    </div>
+                    <div class="nav-div">
+                        <div class="nom-div">
+                            <h3>{{ app.user.nom }} {{app.user.prenom}}</h3>
+                            <p>Stagiaire</p>
+                        </div>
+                        <nav>
+                            <ul>
+                                <li><a class="cool-link" href="#">Accueil</a></li>
+                                <li><a class="cool-link" href="#">Statistique</a></li>
+                                <li><a class="cool-link" href="#">Historique</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    {% endblock %}
     </body>
 </html>
